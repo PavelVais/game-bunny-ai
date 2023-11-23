@@ -105,12 +105,6 @@ async function setup(p) {
         // new MovablePlatform(200, 200, [new Waypoint(400, 400, 0.1), new Waypoint(500, 300, 0.1)]),
     ];
 
-    const constraint = Constraint.create({
-        bodyA: bunny.body,
-        bodyB: movablePlatforms[0].body,
-        length: 0,
-        stiffness: 1.0,
-    });
     World.add(engine.world, [
         bunny.body,
         goal.body,
@@ -143,7 +137,7 @@ async function setup(p) {
     }
 
     // Přidání posluchače událostí pro kolizní události
-    Matter.Events.on(engine, "collisionStart", function(event) {
+    Matter.Events.on(engine, "collisionStart", function (event) {
         const pairs = event.pairs;
 
         // Procházení všech párů, které mají kolizi
@@ -162,7 +156,7 @@ async function setup(p) {
     });
 
     // Posluchač pro události, kdy kolize stále trvá
-    Matter.Events.on(engine, "collisionEnd", function(event) {
+    Matter.Events.on(engine, "collisionEnd", function (event) {
         const pairs = event.pairs;
 
         // Kontrola, zda 'box' už není v kolizi s 'ground'
