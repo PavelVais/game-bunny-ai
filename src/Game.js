@@ -111,7 +111,6 @@ async function setup(p) {
         ...walls.map((w) => w.body),
         ...aiEnvironment.agents.map((a) => a.entity.body),
         ...movablePlatforms.map((p) => p.body),
-        constraint,
     ]);
 
     // Generate n random platforms to jump on. Make sure they dont overlap - make inner function
