@@ -1,6 +1,5 @@
 import * as Neataptic from "neataptic";
 import * as Box from "./Box";
-import { isNearby } from "./utils/Vector";
 import { FitnessManager } from "./Ai/FitnessManager";
 
 export class Agent {
@@ -43,6 +42,7 @@ export class Agent {
         });
         return myNetwork;
     }
+
     // Výpočet akce agenta na základě aktuálního stavu
     act(state) {
         // Stav je pole hodnot vstupů pro neuronovou síť
@@ -62,7 +62,7 @@ export class Agent {
 
     // Upravení fitness skóre agenta na základě jeho výkonu
     updateFitness(currentDistance) {
-        //this.fitness += this.fitnessManager.reward(this, currentDistance);
+        // this.fitness += this.fitnessManager.reward(this, currentDistance);
         // Pokud se agent přiblížil k cíli víc než kdykoliv předtím, aktualizujte nejlepší vzdálenost
         if (currentDistance < this.bestDistance) {
             this.bestDistance = currentDistance;
@@ -80,7 +80,7 @@ export class Agent {
             this.timeSinceLastProgress = 0; // Resetovat čas po penalizaci
         }
 
-        //console.log(this.fitness);
+        // console.log(this.fitness);
     }
 
     // Klonování agenta pomocí jeho neuronové sítě

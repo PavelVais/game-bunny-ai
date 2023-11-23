@@ -29,7 +29,7 @@ export class AssetManager {
     // Load multiple images asynchronously
     async loadTextures(textures) {
         const promises = [];
-        for (let key in textures) {
+        for (const key in textures) {
             promises.push(this.loadTexture(key, textures[key]));
         }
         await Promise.all(promises);

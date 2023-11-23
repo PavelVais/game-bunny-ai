@@ -1,5 +1,3 @@
-import { calculateDistance } from "../utils/Vector";
-
 export class Sensor {
     /**
      * Constructor for creating a new instance of a MainEntity object.
@@ -16,13 +14,13 @@ export class Sensor {
 
     draw(firstEntity, secondEntity) {
         // Calculate the direction to the other entity
-        let dx = firstEntity.position.x - secondEntity.position.x;
-        let dy = firstEntity.position.y - secondEntity.position.y;
-        let distance = Math.sqrt(dx * dx + dy * dy) / 2;
-        let angleToEntity = Math.atan2(dy, dx);
+        const dx = firstEntity.position.x - secondEntity.position.x;
+        const dy = firstEntity.position.y - secondEntity.position.y;
+        const distance = Math.sqrt(dx * dx + dy * dy) / 2;
+        const angleToEntity = Math.atan2(dy, dx);
 
-        let endX1 = secondEntity.position.x + Math.cos(angleToEntity);
-        let endY1 = secondEntity.position.y + Math.sin(angleToEntity);
+        const endX1 = secondEntity.position.x + Math.cos(angleToEntity);
+        const endY1 = secondEntity.position.y + Math.sin(angleToEntity);
 
         // Calculate the color based on the distance
         let red = 255 - distance; // The larger the distance, the less red

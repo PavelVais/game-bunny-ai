@@ -1,6 +1,6 @@
 import * as Matter from "matter-js";
 
-let Bodies = Matter.Bodies;
+const Bodies = Matter.Bodies;
 
 // Abstract properties of FireParticle
 const RADIUS = 5;
@@ -37,7 +37,7 @@ export class FireParticle {
 
     // This method checks is the Particle is within the drawable canvas
     isOffScreen(p) {
-        let pos = this.body.position;
+        const pos = this.body.position;
         return pos.y < 0 || pos.y > p.height;
     }
 }

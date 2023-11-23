@@ -42,14 +42,14 @@ class Box {
 
     // Postupné resetování boxu do původního měřítka
     resetScale() {
-        let targetScaleX = lerp(this.currentScale.x, 1, 0.1);
-        let targetScaleY = lerp(this.currentScale.y, 1, 0.1);
+        const targetScaleX = lerp(this.currentScale.x, 1, 0.1);
+        const targetScaleY = lerp(this.currentScale.y, 1, 0.1);
         this.scale(targetScaleX, targetScaleY);
     }
 
     // Resetování náklonu boxu po kolizi
     resetAngle() {
-        let angle = this.body.angle % (2 * Math.PI);
+        const angle = this.body.angle % (2 * Math.PI);
         if (angle !== 0) {
             Body.setAngularVelocity(this.body, -angle * 0.1);
         }
@@ -82,7 +82,7 @@ class Box {
     draw(render, assetManager) {
         // Zde byste použili vykreslovací funkce z knihovny, např. p5.js nebo nativní funkce Canvas API
 
-        let boxTexture = assetManager.getTexture("box");
+        const boxTexture = assetManager.getTexture("box");
         render.push(); // Start a new drawing state
         render.imageMode(render.CORNER); // Center the image at the position
         render.image(

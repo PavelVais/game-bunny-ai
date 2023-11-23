@@ -45,7 +45,7 @@ class Manager {
      * @param {World} renderer - The renderer object
      */
     update(renderer) {
-        for (let obj of this.objects) {
+        for (const obj of this.objects) {
             if (typeof obj.alive === "boolean" && !obj.alive) {
                 this.unregister(obj);
                 continue;
@@ -61,7 +61,7 @@ class Manager {
      * Draws all registered objects
      */
     draw(renderer, assetManager) {
-        for (let obj of this.objects) {
+        for (const obj of this.objects) {
             if (typeof obj.draw === "function") {
                 obj.draw(renderer, assetManager);
             }
@@ -103,7 +103,7 @@ class Manager {
                 callback(pair);
             }
 
-            for (let object of this.partlyCollisionCallbacks.keys()) {
+            for (const object of this.partlyCollisionCallbacks.keys()) {
                 if ((pair.bodyA === object || pair.bodyB === object) && this.partlyCollisionCallbacks.get(object)[0]) {
                     const callback = this.partlyCollisionCallbacks.get(object)[0];
                     callback(pair);
@@ -115,7 +115,7 @@ class Manager {
     handleCollisionsEnd(event) {
         const { pairs } = event;
         for (const pair of pairs) {
-            for (let object of this.partlyCollisionCallbacks.keys()) {
+            for (const object of this.partlyCollisionCallbacks.keys()) {
                 if ((pair.bodyA === object || pair.bodyB === object) && this.partlyCollisionCallbacks.get(object)[1]) {
                     const callback = this.partlyCollisionCallbacks.get(object)[1];
                     callback(pair);

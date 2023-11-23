@@ -24,11 +24,11 @@ export function calculateDistance(x1, y1, x2, y2) {
  * @returns {Boolean} - True if the entities are nearby, false otherwise.
  */
 export function isNearby(entity, entity2, threshold = 100) {
-    let agentX = entity.position.x;
-    let agentY = entity.position.y;
-    let platformX = entity2.position.x;
-    let platformY = entity2.position.y;
+    const agentX = entity.position.x;
+    const agentY = entity.position.y;
+    const platformX = entity2.position.x;
+    const platformY = entity2.position.y;
 
-    let distance = calculateDistance(agentX, agentY, platformX, platformY);
+    const distance = calculateDistance(agentX, agentY, platformX, platformY);
     return distance < threshold;
 }

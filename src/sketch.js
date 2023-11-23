@@ -16,23 +16,23 @@ import { isOverlappingSome } from "./utils/CollisionUtils";
 import { MovablePlatform } from "./entities/MovablePlatform";
 import { Waypoint } from "./entities/Wapoint";
 
-let Engine = Matter.Engine,
-    World = Matter.World,
-    Bodies = Matter.Bodies,
-    Body = Matter.Body,
-    Events = Matter.Events,
-    Constraint = Matter.Constraint;
+const Engine = Matter.Engine;
+const World = Matter.World;
+const Bodies = Matter.Bodies;
+const Body = Matter.Body;
+const Events = Matter.Events;
+const Constraint = Matter.Constraint;
 
 const aiAgents = 10;
 let engine;
 let bunny, ground;
 let goal;
-let platforms = [];
+const platforms = [];
 let movablePlatforms = [];
 let won = false;
-let fps = new FpsMeter();
+const fps = new FpsMeter();
 let assetManager;
-let canvas = new Canvas([20, 20, 20], 1200, 600);
+const canvas = new Canvas([20, 20, 20], 1200, 600);
 let drawCount = 0;
 const infoPanel = new Infopanel([30, 30, 1200, 60]);
 let aiEnvironment;
@@ -102,7 +102,7 @@ async function setup(p) {
             new Waypoint(900, 550, 1),
             new Waypoint(800, 300, 1),
         ]),
-        //new MovablePlatform(200, 200, [new Waypoint(400, 400, 0.1), new Waypoint(500, 300, 0.1)]),
+        // new MovablePlatform(200, 200, [new Waypoint(400, 400, 0.1), new Waypoint(500, 300, 0.1)]),
     ];
 
     const constraint = Constraint.create({
@@ -126,10 +126,10 @@ async function setup(p) {
     }
 
     function generatePlatforms() {
-        let x = seedRandom.randomInt(30, canvas.width - 140);
-        let y = seedRandom.randomInt(100, canvas.height - 40);
+        const x = seedRandom.randomInt(30, canvas.width - 140);
+        const y = seedRandom.randomInt(100, canvas.height - 40);
 
-        let platform = new Platform(x, y);
+        const platform = new Platform(x, y);
 
         if (
             !isOverlappingSome(
@@ -143,12 +143,12 @@ async function setup(p) {
     }
 
     // Přidání posluchače událostí pro kolizní události
-    Matter.Events.on(engine, "collisionStart", function (event) {
+    Matter.Events.on(engine, "collisionStart", function(event) {
         const pairs = event.pairs;
 
         // Procházení všech párů, které mají kolizi
         for (let i = 0, j = pairs.length; i !== j; ++i) {
-            let pair = pairs[i];
+            const pair = pairs[i];
 
             // Pokud jeden z těles je senzor 'groundSensor' a druhý je 'ground', pak 'box' není ve vzduchu
             if (
@@ -162,12 +162,12 @@ async function setup(p) {
     });
 
     // Posluchač pro události, kdy kolize stále trvá
-    Matter.Events.on(engine, "collisionEnd", function (event) {
+    Matter.Events.on(engine, "collisionEnd", function(event) {
         const pairs = event.pairs;
 
         // Kontrola, zda 'box' už není v kolizi s 'ground'
         for (let i = 0, j = pairs.length; j !== i; ++i) {
-            let pair = pairs[i];
+            const pair = pairs[i];
 
             if (
                 (pair.bodyA.label === "groundSensor" && pair.bodyB.label === "ground") ||
@@ -256,8 +256,8 @@ export function draw(p, drawCount) {
     p.image(assetManager.getTexture("background"), 20, 100, canvas.width, canvas.height - 20); // Draw the image at the transformed coordinates
 
     const sensor = new Sensor(p);
-    for (let platform of platforms) {
-        //sensor.draw(bunny.body, platform);
+    for (const platform of platforms) {
+        // sensor.draw(bunny.body, platform);
     }
 
     manager.draw(p, assetManager);
@@ -269,8 +269,8 @@ export function draw(p, drawCount) {
 
         // Draw "confetti"
         for (let i = 0; i < 50; i++) {
-            let x = p.random(p.width);
-            let y = p.random(p.height);
+            const x = p.random(p.width);
+            const y = p.random(p.height);
             p.fill(p.random(255), p.random(255), p.random(255));
             p.ellipse(x, y, 10, 10);
         }

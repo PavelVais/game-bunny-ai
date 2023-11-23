@@ -9,6 +9,7 @@ export class Goal {
         this.size = { x: 40, y: 40 };
         this.body = Bodies.rectangle(x, y, ...Object.values(this.size), options);
     }
+
     /**
      * Draws an image of a box at the given position and with the given angle using the provided renderer and asset manager.
      *

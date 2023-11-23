@@ -10,7 +10,10 @@ export class Infopanel {
     }
 
     register(label, value) {
-        this.messages.push({ label, value });
+        this.messages.push({
+            label,
+            value,
+        });
     }
 
     /**
